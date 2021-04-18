@@ -1,0 +1,20 @@
+@import './variables.scss';
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Manrope', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: nth($colorDefault, 1);
+}
+
+input {
+	color: nth($colorDefault, 1);
+}
