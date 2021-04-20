@@ -10,7 +10,7 @@ export const Time: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			<circle cx="16.5" cy="16" r="16" fill="url(#paint0_linear)" />
+			<circle cx="16.5" cy="16" r="16" fill="#B395F3" />
 			<path
 				fillRule="evenodd"
 				clipRule="evenodd"
