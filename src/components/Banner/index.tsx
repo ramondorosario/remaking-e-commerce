@@ -10,22 +10,27 @@ export const Banner: React.FC = () => {
 		<div className={s.container}>
 			<div className={s.content}>
 				<img src={Background} alt="" />
+
 				<div className={s.column}>
 					<h2>Aproveite agora</h2>
-					<p>
+					<div>
 						<div className={s.circle}>
 							<Ticket />
 						</div>
 						<span>Cupom: htmlnaoelinguagem</span>
-					</p>
+					</div>
 				</div>
+
+				<span className={s.separate} />
+
 				<div className={s.column}>
 					<h2>Finaliza em</h2>
-					<p>
+					<div>
 						<Time />
 						<span>00:05:00</span>
-					</p>
+					</div>
 				</div>
+
 				<div className={s.column}>
 					<Money />
 				</div>
