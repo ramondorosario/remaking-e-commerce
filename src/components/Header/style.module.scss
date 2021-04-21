@@ -6,20 +6,20 @@
 	justify-content: center;
 
 	background-color: nth($black, 1);
-	min-height: 104px;
+	height: 104px;
 
 	.center {
 		max-width: 1320px;
 		width: 100%;
 
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 32px minmax(200px, 456px) repeat(3, auto);
+		column-gap: 90px;
 		align-items: center;
 
 		> svg {
 			min-width: 40px;
 			min-height: 40px;
-			margin-right: 42px;
 		}
 
 		.form,
@@ -34,7 +34,6 @@
 			width: 100%;
 
 			background-color: nth($black, 3);
-			margin-right: 45px;
 
 			input {
 				width: 100%;
@@ -55,7 +54,6 @@
 				background-color: transparent;
 				border: 0;
 				outline: none;
-				margin-right: 22px;
 				cursor: pointer;
 
 				&:focus-visible {
@@ -68,11 +66,13 @@
 			svg {
 				margin-right: 12px;
 			}
+
+			&:first-of-type {
+				margin-right: 45px;
+			}
 		}
 
 		.profile {
-			margin-left: 66px;
-
 			p {
 				font-size: 16px;
 				color: nth($colorDefault, 1);
