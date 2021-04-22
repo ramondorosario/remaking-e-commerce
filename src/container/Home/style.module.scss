@@ -1,0 +1,9 @@
+.content {
+	max-width: 1320px;
+	width: 100%;
+	border: 1px solid red;
+
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	margin: 24px auto 0;
+}
