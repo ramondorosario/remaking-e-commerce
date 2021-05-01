@@ -17,10 +17,10 @@ export const Home: React.FC = () => {
 				</main>
 				<aside>
 					<div className={s.containerBag}>
-						<h2>
+						<div className={s.headerBag}>
 							<Bag />
-							Sacola
-						</h2>
+							<h2>Sacola</h2>
+						</div>
 						<div className={s.contentBag}>
 							<h3>Sua sacola esta vazia</h3>
 							<p>Adicione filmes agora</p>
