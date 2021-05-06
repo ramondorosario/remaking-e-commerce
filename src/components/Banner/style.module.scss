@@ -2,6 +2,7 @@
 
 .container {
 	cursor: pointer;
+	margin-bottom: 2.5rem;
 }
 
 .content {
@@ -22,6 +23,7 @@
 		text-transform: uppercase;
 
 		h2 {
+			font-weight: normal;
 			font-size: 40px;
 			color: rgba(nth($black, 4), 0.8);
 		}
