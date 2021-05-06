@@ -8,16 +8,18 @@ interface IMovieCard {
 	name: string;
 	rating: number;
 	price: number;
+	url: string;
 }
 
 export const MovieCard: React.FC<IMovieCard> = ({
 	name,
 	rating,
 	price,
+	url,
 }: IMovieCard) => {
 	return (
 		<div className={s.container}>
-			<img src="" alt="" />
+			<img src={url} alt="Banner do filme" />
 			<div className={s.content}>
 				<header>
 					<SilverStar />
