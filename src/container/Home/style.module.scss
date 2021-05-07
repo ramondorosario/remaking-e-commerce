@@ -99,6 +99,35 @@
 			grid-template-columns: repeat(5, 1fr);
 			gap: 1.5rem;
 			margin: 1rem 0 2.5rem;
+
+			.button {
+				all: unset;
+				box-sizing: border-box;
+				font-weight: 600;
+				line-height: 1.375rem;
+				padding: 0.5rem 0;
+				text-align: center;
+				color: nth($white, 1);
+				opacity: 0.2;
+				background: transparent;
+				border: 2px solid nth($white, 1);
+				cursor: pointer;
+				transition: all 0.2s;
+
+				&:hover {
+					opacity: 0.8;
+					color: nth($pink, 1);
+					background-color: transparent;
+					border-color: nth($pink, 1);
+				}
+
+				&.selected {
+					opacity: 1;
+					color: nth($pink, 1);
+					border-color: nth($pink, 1);
+					background: rgba(225, 131, 200, 0.2);
+				}
+			}
 		}
 	}
 }

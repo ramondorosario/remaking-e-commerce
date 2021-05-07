@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
 import { MovieCard } from '../../components/MovieCard';
@@ -9,10 +9,36 @@ import { useMovies } from '../../contexts/MovieContext';
 
 import s from './style.module.scss';
 
+const buttons = [
+	{
+		id: 1,
+		name: 'Todos',
+	},
+	{
+		id: 28,
+		name: 'Ação',
+	},
+	{
+		id: 10749,
+		name: 'Romance',
+	},
+	{
+		id: 878,
+		name: 'Ficção ciêntifica',
+	},
+	{
+		id: 27,
+		name: 'Terror',
+	},
+];
+
 export const Home: React.FC = () => {
+	const [buttonSelected, setButtonSelected] = useState<number>(1);
+
 	const {
 		getTop5Movies,
 		getPopularMovies,
+		getPopularMoviesByGenre,
 		movies,
 		top5PopularMovies,
 	} = useMovies();
@@ -21,6 +47,11 @@ export const Home: React.FC = () => {
 		getTop5Movies();
 		getPopularMovies();
 	}, []);
+
+	const handleButton = (id: number) => {
+		getPopularMoviesByGenre(id);
+		setButtonSelected(id);
+	};
 
 	return (
 		<div className={s.container}>
@@ -46,7 +77,22 @@ export const Home: React.FC = () => {
 					</section>
 					<section className={s.containerMovies}>
 						<h2>Filmes</h2>
+
 						<div className={s.moviesList}>
+							{buttons.map((button) => {
+								return (
+									<button
+										key={button.id}
+										className={`${s.button} ${
+											buttonSelected === button.id ? s.selected : ''
+										}`}
+										type="button"
+										onClick={() => handleButton(button.id)}
+									>
+										{button.name}
+									</button>
+								);
+							})}
 							{movies.map((movie) => {
 								return (
 									<MovieCard
