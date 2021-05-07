@@ -49,8 +49,8 @@ export const Home: React.FC = () => {
 	}, []);
 
 	const handleButton = (id: number) => {
-		getPopularMoviesByGenre(id);
 		setButtonSelected(id);
+		return id === 1 ? getPopularMovies() : getPopularMoviesByGenre(id);
 	};
 
 	return (
