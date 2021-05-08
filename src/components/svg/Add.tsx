@@ -1,0 +1,59 @@
+import React from 'react';
+
+export const Add: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+	return (
+		<svg
+			{...props}
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<g filter="url(#filter0_b)">
+				<rect width="24" height="24" fill="black" fillOpacity="0.37" />
+			</g>
+			<line
+				x1="11.75"
+				y1="4"
+				x2="11.75"
+				y2="19"
+				stroke="#6FCF97"
+				strokeWidth="1.5"
+			/>
+			<line
+				x1="19"
+				y1="11.75"
+				x2="4"
+				y2="11.75"
+				stroke="#6FCF97"
+				strokeWidth="1.5"
+			/>
+			<defs>
+				<filter
+					id="filter0_b"
+					x="-15"
+					y="-15"
+					width="54"
+					height="54"
+					filterUnits="userSpaceOnUse"
+					colorInterpolationFilters="sRGB"
+				>
+					<feFlood floodOpacity="0" result="BackgroundImageFix" />
+					<feGaussianBlur in="BackgroundImage" stdDeviation="7.5" />
+					<feComposite
+						in2="SourceAlpha"
+						operator="in"
+						result="effect1_backgroundBlur"
+					/>
+					<feBlend
+						mode="normal"
+						in="SourceGraphic"
+						in2="effect1_backgroundBlur"
+						result="shape"
+					/>
+				</filter>
+			</defs>
+		</svg>
+	);
+};
