@@ -1,0 +1,55 @@
+@import '../../assets/styles/variables.scss';
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 4.1875rem;
+
+	img {
+		width: 2.6875rem;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	span {
+		color: nth($colorDefault, 1);
+	}
+
+	.info {
+		margin: 0 auto 0 0.8125rem;
+
+		span {
+			display: flex;
+			&:first-child {
+				margin-bottom: 0.5rem;
+				font-weight: 500;
+			}
+		}
+	}
+
+	.menu {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		span {
+			display: inline-block;
+			width: 2.375rem;
+			height: 1.5rem;
+			text-align: center;
+		}
+
+		button {
+			all: unset;
+			cursor: pointer;
+			font-size: 0;
+			transition: background 0.2s;
+
+			&:hover {
+				background-color: rgba(107, 107, 107, 0.37);
+			}
+		}
+	}
+}
