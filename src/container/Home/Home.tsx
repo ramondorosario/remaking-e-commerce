@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
+import { ItemBag } from '../../components/ItemBag';
 import { MovieCard } from '../../components/MovieCard';
 import { Bag } from '../../components/svg/Bag';
 import { PersonIcon } from '../../components/svg/PersonIcon';
@@ -114,10 +115,22 @@ export const Home: React.FC = () => {
 							<h2>Sacola</h2>
 						</header>
 						<div className={s.contentBag}>
-							<h3>Sua sacola esta vazia</h3>
-							<p>Adicione filmes agora</p>
-							<PersonIcon />
-							<p className={s.insertCupom}>Insira seu cupom</p>
+							{true ? (
+								<>
+									<h3>Sua sacola esta vazia</h3>
+									<p>Adicione filmes agora</p>
+									<PersonIcon />
+									<p className={s.insertCupom}>Insira seu cupom</p>
+								</>
+							) : (
+								<div className={s.contentCart}>
+									<ItemBag />
+									<ItemBag />
+									<ItemBag />
+									<ItemBag />
+									<ItemBag />
+								</div>
+							)}
 							<form>
 								<input type="text" placeholder="Cupom de desconto" />
 								<Ticket />
