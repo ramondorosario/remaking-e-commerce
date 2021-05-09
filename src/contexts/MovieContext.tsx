@@ -60,7 +60,7 @@ export const MovieContextProvider: React.FC = ({ children }) => {
 				rating: movie.vote_average,
 				price: movie.price,
 				poster: movie.poster_path,
-				amount: 0,
+				amount: 1,
 			};
 		});
 
@@ -79,6 +79,7 @@ export const MovieContextProvider: React.FC = ({ children }) => {
 				rating: movie.vote_average,
 				price: movie.price,
 				poster: movie.poster_path,
+				amount: 1,
 			};
 		});
 

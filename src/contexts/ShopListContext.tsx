@@ -38,7 +38,7 @@ export const ShopListProvider: React.FC = ({ children }) => {
 		const movie = shopList[index];
 		const newList = [...shopList];
 
-		if (movie.amount > 0) {
+		if (movie.amount > 1) {
 			newList[index].amount--;
 			setShopList(newList);
 		} else {
