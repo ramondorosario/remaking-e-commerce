@@ -33,7 +33,7 @@ export const ShopListItem = (movie: IMovie) => {
 				>
 					<Add />
 				</button>
-				<span>1</span>
+				<span>{movie.amount}</span>
 				<button
 					type="button"
 					onClick={() => decrementMovieInTheShopList(movie.id)}
