@@ -124,6 +124,7 @@ export const Home: React.FC = () => {
 									{shopList.map((item) => {
 										return (
 											<ShopListItem
+												key={item.id}
 												id={item.id}
 												title={item.title}
 												poster={item.poster}
