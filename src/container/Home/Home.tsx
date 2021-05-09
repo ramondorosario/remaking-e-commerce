@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
-import { ItemBag } from '../../components/ItemBag';
+import { ShopListItem } from '../../components/ShopListItem';
 import { MovieCard } from '../../components/MovieCard';
 import { Bag } from '../../components/svg/Bag';
 import { PersonIcon } from '../../components/svg/PersonIcon';
@@ -9,6 +9,7 @@ import { Ticket } from '../../components/svg/Ticket';
 import { useMovies } from '../../contexts/MovieContext';
 
 import s from './style.module.scss';
+import { useShopList } from '../../contexts/ShopListContext';
 
 const buttons = [
 	{
@@ -44,6 +45,8 @@ export const Home: React.FC = () => {
 		top5PopularMovies,
 	} = useMovies();
 
+	const { shopList } = useShopList();
+
 	useEffect(() => {
 		getTop5Movies();
 		getPopularMovies();
@@ -67,10 +70,11 @@ export const Home: React.FC = () => {
 								return (
 									<MovieCard
 										key={movie.id}
-										name={movie.title}
+										id={movie.id}
+										title={movie.title}
 										price={movie.price}
 										rating={movie.rating}
-										url={movie.poster}
+										poster={movie.poster}
 									/>
 								);
 							})}
@@ -78,7 +82,6 @@ export const Home: React.FC = () => {
 					</section>
 					<section className={s.containerMovies}>
 						<h2>Filmes</h2>
-
 						<div className={s.moviesList}>
 							{buttons.map((button) => {
 								return (
@@ -98,10 +101,11 @@ export const Home: React.FC = () => {
 								return (
 									<MovieCard
 										key={movie.id}
-										name={movie.title}
+										id={movie.id}
+										title={movie.title}
 										price={movie.price}
 										rating={movie.rating}
-										url={movie.poster}
+										poster={movie.poster}
 									/>
 								);
 							})}
@@ -109,27 +113,33 @@ export const Home: React.FC = () => {
 					</section>
 				</main>
 				<aside>
-					<div className={s.containerBag}>
-						<header className={s.headerBag}>
+					<div className={s.containerShopList}>
+						<header className={s.headerShopList}>
 							<Bag />
 							<h2>Sacola</h2>
 						</header>
-						<div className={s.contentBag}>
-							{true ? (
+						<div className={s.contentShopList}>
+							{shopList?.length ? (
+								<div className={s.contentList}>
+									{shopList.map((item) => {
+										return (
+											<ShopListItem
+												id={item.id}
+												title={item.title}
+												poster={item.poster}
+												price={item.price}
+												amount={item.amount}
+											/>
+										);
+									})}
+								</div>
+							) : (
 								<>
 									<h3>Sua sacola esta vazia</h3>
 									<p>Adicione filmes agora</p>
 									<PersonIcon />
 									<p className={s.insertCupom}>Insira seu cupom</p>
 								</>
-							) : (
-								<div className={s.contentCart}>
-									<ItemBag />
-									<ItemBag />
-									<ItemBag />
-									<ItemBag />
-									<ItemBag />
-								</div>
 							)}
 							<form>
 								<input type="text" placeholder="Cupom de desconto" />

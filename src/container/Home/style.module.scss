@@ -9,7 +9,7 @@
 	column-gap: 60px;
 	margin: 24px auto 0;
 
-	.containerBag {
+	.containerShopList {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -24,7 +24,7 @@
 			line-height: 150%;
 		}
 
-		.headerBag {
+		.headerShopList {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -34,7 +34,7 @@
 			background-color: nth($purple, 1);
 		}
 
-		.contentBag {
+		.contentShopList {
 			flex: 1;
 			display: flex;
 			flex-direction: column;
@@ -95,7 +95,7 @@
 				}
 			}
 
-			.contentCart {
+			.contentList {
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 1.3rem;
