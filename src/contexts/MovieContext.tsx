@@ -10,38 +10,40 @@ interface IData {
 	poster_path: string;
 }
 
-interface IMovies {
+interface IMovie {
 	id: number;
 	title: string;
 	rating: number;
 	price: number;
 	poster: string;
+	amount: number;
 }
 
-interface IMoviesContex {
-	movies: IMovies[];
-	top5PopularMovies: IMovies[];
+interface IMovieContex {
+	movies: IMovie[];
+	top5PopularMovies: IMovie[];
 	getPopularMovies: () => void;
 	getTop5Movies: () => void;
 	getPopularMoviesByGenre: (genreId: number) => void;
 }
 
-export const MovieContext = createContext({} as IMoviesContex);
+export const MovieContext = createContext({} as IMovieContex);
 
 export const MovieContextProvider: React.FC = ({ children }) => {
-	const [movies, setMovies] = useState<IMovies[]>([]);
-	const [top5PopularMovies, setTop5PopularMovies] = useState<IMovies[]>([]);
+	const [movies, setMovies] = useState<IMovie[]>([]);
+	const [top5PopularMovies, setTop5PopularMovies] = useState<IMovie[]>([]);
 
 	const getTop5Movies = async () => {
 		const { data } = await api.get('discover/movie?language=pt-BR');
 
-		const response: IMovies[] = data.results.map((movie: IData) => {
+		const response: IMovie[] = data.results.map((movie: IData) => {
 			return {
 				id: movie.id,
 				title: movie.title,
 				rating: movie.vote_average,
 				price: movie.price,
 				poster: movie.poster_path,
+				amount: 0,
 			};
 		});
 
@@ -51,13 +53,14 @@ export const MovieContextProvider: React.FC = ({ children }) => {
 	const getPopularMovies = async () => {
 		const { data } = await api.get('discover/movie?language=pt-BR');
 
-		const response: IMovies[] = data.results.map((movie: IData) => {
+		const response: IMovie[] = data.results.map((movie: IData) => {
 			return {
 				id: movie.id,
 				title: movie.title,
 				rating: movie.vote_average,
 				price: movie.price,
 				poster: movie.poster_path,
+				amount: 0,
 			};
 		});
 
@@ -69,7 +72,7 @@ export const MovieContextProvider: React.FC = ({ children }) => {
 			`discover/movie?with_genres=${genreId}&language=pt-BR`,
 		);
 
-		const response: IMovies[] = data.results.map((movie: IData) => {
+		const response: IMovie[] = data.results.map((movie: IData) => {
 			return {
 				id: movie.id,
 				title: movie.title,
@@ -97,7 +100,6 @@ export const MovieContextProvider: React.FC = ({ children }) => {
 	);
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useMovies = () => {
 	return useContext(MovieContext);
 };
