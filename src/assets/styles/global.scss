@@ -25,3 +25,10 @@ a {
 input {
 	color: nth($colorDefault, 1);
 }
+
+a,
+input,
+button,
+::placeholder {
+	font-family: 'Manrope', sans-serif;
+}
