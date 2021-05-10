@@ -68,30 +68,66 @@
 
 			form {
 				margin-top: auto;
-
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-
 				width: 100%;
-				background-color: nth($black, 5);
 
-				input {
-					background-color: transparent;
-					border: 0;
-					outline: none;
-					height: 40px;
-					padding: 16px 0 16px 13px;
-					font-size: 16px;
-					line-height: 150%;
+				> div {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
 
-					&::placeholder {
-						color: rgba(nth($colorDefault, 1), 0.4);
+					background-color: nth($black, 5);
+
+					input {
+						width: 100%;
+						background-color: transparent;
+						border: 0;
+						outline: none;
+						height: 40px;
+						padding: 16px 0 16px 13px;
+						font-size: 16px;
+						line-height: 150%;
+
+						&:focus {
+							text-transform: uppercase;
+						}
+
+						&::placeholder {
+							text-transform: none;
+							color: rgba(nth($colorDefault, 1), 0.4);
+						}
+					}
+
+					svg {
+						margin-right: 12px;
 					}
 				}
 
-				svg {
-					margin-right: 12px;
+				button {
+					all: unset;
+					box-sizing: border-box;
+					display: flex;
+					justify-content: space-between;
+					cursor: pointer;
+					background-color: nth($pink, 4);
+					padding: 1rem;
+					width: 100%;
+
+					transition: all 0.2s;
+					margin-top: 1.5rem;
+
+					&:hover {
+						background: linear-gradient(
+								0deg,
+								rgba(225, 123, 123, 0.45),
+								rgba(225, 123, 123, 0.45)
+							),
+							#ffb6eb;
+						box-shadow: 0px 16px 24px -12px rgba(226, 94, 191, 0.16);
+					}
+
+					span {
+						display: inline-block;
+					}
 				}
 			}
 

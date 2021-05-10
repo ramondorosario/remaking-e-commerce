@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
+import { useShopList } from '../../contexts/ShopListContext';
 import { Money } from '../svg/Money';
 import { Ticket } from '../svg/Ticket';
 import { Time } from '../svg/Time';
@@ -10,6 +11,7 @@ let teste: NodeJS.Timeout;
 export const Banner: React.FC = () => {
 	const [time, setTime] = useState<number>(5 * 60);
 	const [bannerClicked, setBannerClicked] = useState<boolean>(false);
+	const { applyCoupon } = useShopList();
 
 	const minutes = Math.floor(time / 60)
 		.toString()
@@ -20,7 +22,10 @@ export const Banner: React.FC = () => {
 	useEffect(() => {
 		if (time !== 0 && !bannerClicked) {
 			teste = setTimeout(() => setTime(time - 1), 1000);
-		} else if (time === 0 || bannerClicked) {
+		} else if (time === 0) {
+			clearTimeout(teste);
+		} else if (bannerClicked) {
+			applyCoupon('htmlnaoelinguagem');
 			clearTimeout(teste);
 		}
 	}, [time, bannerClicked]);

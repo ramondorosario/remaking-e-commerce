@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
 import { ShopListItem } from '../../components/ShopListItem';
@@ -36,6 +37,8 @@ const buttons = [
 
 export const Home: React.FC = () => {
 	const [buttonSelected, setButtonSelected] = useState<number>(1);
+	const { setValue, register, watch } = useForm();
+	const couponValue = watch('coupon');
 
 	const {
 		getTop5Movies,
@@ -45,7 +48,15 @@ export const Home: React.FC = () => {
 		top5PopularMovies,
 	} = useMovies();
 
-	const { shopList } = useShopList();
+	const { shopList, totalShopList, currentCoupon, applyCoupon } = useShopList();
+
+	useEffect(() => {
+		setValue('coupon', currentCoupon);
+	}, [currentCoupon]);
+
+	useEffect(() => {
+		if (couponValue) applyCoupon(couponValue);
+	}, [couponValue]);
 
 	useEffect(() => {
 		getTop5Movies();
@@ -143,8 +154,20 @@ export const Home: React.FC = () => {
 								</>
 							)}
 							<form>
-								<input type="text" placeholder="Cupom de desconto" />
-								<Ticket />
+								<div>
+									<input
+										type="text"
+										{...register('coupon')}
+										placeholder="Cupom de desconto"
+									/>
+									<Ticket />
+								</div>
+								{shopList.length > 0 && (
+									<button type="button">
+										<span>Confirme seus dados</span>
+										<span>R$ {totalShopList.toString().replace('.', ',')}</span>
+									</button>
+								)}
 							</form>
 						</div>
 					</div>
