@@ -1,0 +1,71 @@
+@import '../../assets/styles/variables.scss';
+
+.container {
+	section {
+		max-width: 70.5rem;
+
+		display: grid;
+		grid-template-columns: 46.5rem 22.5rem;
+		column-gap: 1.5rem;
+		margin: 4.625rem auto 3.125rem;
+		align-items: flex-start;
+
+		> form {
+			> div {
+				background-color: nth($black, 3);
+				padding: 2rem;
+				margin-bottom: 1rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				h2 {
+					font-weight: 500;
+					font-size: 32px;
+					color: nth($colorDefault, 1);
+					margin-bottom: 2rem;
+				}
+
+				div {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					column-gap: 1.5rem;
+					row-gap: 2.375rem;
+
+					label {
+						span {
+							display: block;
+							color: nth($colorDefault, 1);
+							margin-bottom: 0.3rem;
+						}
+
+						input {
+							width: 100%;
+							padding: 0.65rem 1rem;
+							background-color: nth($black, 5);
+							border: 0;
+
+							::placeholder {
+								color: nth($colorDefault, 1);
+								opacity: 0.4;
+							}
+						}
+					}
+				}
+
+				&.relative {
+					position: relative;
+
+					svg {
+						position: absolute;
+						top: 30%;
+						left: -35%;
+						transform: translateX(35%) scale(2);
+						z-index: -1;
+					}
+				}
+			}
+		}
+	}
+}
