@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
-import { ShopListItem } from '../../components/ShopListItem';
 import { MovieCard } from '../../components/MovieCard';
-import { Bag } from '../../components/svg/Bag';
-import { PersonIcon } from '../../components/svg/PersonIcon';
-import { Ticket } from '../../components/svg/Ticket';
+
 import { useMovies } from '../../contexts/MovieContext';
 
 import s from './style.module.scss';
-import { useShopList } from '../../contexts/ShopListContext';
+import { ShopList } from '../../components/ShopList';
 
 const buttons = [
 	{
@@ -37,8 +34,6 @@ const buttons = [
 
 export const Home: React.FC = () => {
 	const [buttonSelected, setButtonSelected] = useState<number>(1);
-	const { setValue, register, watch } = useForm();
-	const couponValue = watch('coupon');
 
 	const {
 		getTop5Movies,
@@ -47,16 +42,6 @@ export const Home: React.FC = () => {
 		movies,
 		top5PopularMovies,
 	} = useMovies();
-
-	const { shopList, totalShopList, currentCoupon, applyCoupon } = useShopList();
-
-	useEffect(() => {
-		setValue('coupon', currentCoupon);
-	}, [currentCoupon]);
-
-	useEffect(() => {
-		if (couponValue) applyCoupon(couponValue);
-	}, [couponValue]);
 
 	useEffect(() => {
 		getTop5Movies();
@@ -124,53 +109,7 @@ export const Home: React.FC = () => {
 					</section>
 				</main>
 				<aside>
-					<div className={s.containerShopList}>
-						<header className={s.headerShopList}>
-							<Bag />
-							<h2>Sacola</h2>
-						</header>
-						<div className={s.contentShopList}>
-							{shopList?.length ? (
-								<div className={s.contentList}>
-									{shopList.map((item) => {
-										return (
-											<ShopListItem
-												key={item.id}
-												id={item.id}
-												title={item.title}
-												poster={item.poster}
-												price={item.price}
-												amount={item.amount}
-											/>
-										);
-									})}
-								</div>
-							) : (
-								<>
-									<h3>Sua sacola esta vazia</h3>
-									<p>Adicione filmes agora</p>
-									<PersonIcon />
-									<p className={s.insertCupom}>Insira seu cupom</p>
-								</>
-							)}
-							<form>
-								<div>
-									<input
-										type="text"
-										{...register('coupon')}
-										placeholder="Cupom de desconto"
-									/>
-									<Ticket />
-								</div>
-								{shopList.length > 0 && (
-									<button type="button">
-										<span>Confirme seus dados</span>
-										<span>R$ {totalShopList.toString().replace('.', ',')}</span>
-									</button>
-								)}
-							</form>
-						</div>
-					</div>
+					<ShopList />
 				</aside>
 			</div>
 		</div>
