@@ -28,7 +28,6 @@ export const ConfirmData: React.FC = () => {
 							</label>
 						</div>
 					</div>
-
 					<div className={s.relative}>
 						<PersonIcon />
 						<h2>Informações de endereço</h2>
@@ -55,7 +54,6 @@ export const ConfirmData: React.FC = () => {
 							</label>
 						</div>
 					</div>
-
 					<div>
 						<h2>Informações de pagamento</h2>
 						<div className={s.containerInputs}>
