@@ -33,23 +33,24 @@
 					column-gap: 1.5rem;
 					row-gap: 2.375rem;
 
-					label {
-						span {
-							display: block;
-							color: nth($colorDefault, 1);
-							margin-bottom: 0.3rem;
+					&.error {
+						span,
+						p {
+							color: nth($colorError, 1);
 						}
 
 						input {
-							width: 100%;
-							padding: 0.65rem 1rem;
-							background-color: nth($black, 5);
-							border: 0;
+							border-color: nth($colorError, 1);
 
-							::placeholder {
-								color: nth($colorDefault, 1);
-								opacity: 0.4;
+							&:focus-visible {
+								outline: none;
 							}
+						}
+
+						p {
+							font-size: 0.5rem;
+							text-transform: uppercase;
+							margin-top: 0.2rem;
 						}
 					}
 				}
