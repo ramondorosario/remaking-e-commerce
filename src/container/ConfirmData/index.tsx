@@ -17,7 +17,7 @@ export const ConfirmData: React.FC = () => {
 						<div className={s.containerInputs}>
 							<Input
 								textLabel="Insira seu nome completo"
-								placeholder="Ex: Ramon Do Rosário"
+								placeholder="Ex: Fulano de Tal"
 								type="text"
 							/>
 							<Input
