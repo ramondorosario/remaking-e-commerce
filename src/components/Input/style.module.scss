@@ -1,6 +1,6 @@
 @import '../../assets/styles/variables.scss';
 
-label {
+.container {
 	min-height: 4.8rem;
 
 	span {
@@ -27,6 +27,14 @@ label {
 
 		&[type='text'] {
 			text-transform: capitalize;
+		}
+
+		&[type='number'] {
+			&::-webkit-inner-spin-button {
+				//Oculta o botão do input
+				display: none;
+			}
+			-moz-appearance: textfield; // Oculta o botão do input no Firefox
 		}
 	}
 }
