@@ -33,6 +33,12 @@
 					column-gap: 1.5rem;
 					row-gap: 2.375rem;
 
+					.inputNameCard {
+						input {
+							text-transform: uppercase;
+						}
+					}
+
 					.error {
 						span,
 						p {
