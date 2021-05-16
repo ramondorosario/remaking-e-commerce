@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 import React, { InputHTMLAttributes, ReactNode } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 import s from './style.module.scss';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	textLabel: string;
 	elementError: ReactNode;
-	register: any;
+	register: UseFormRegisterReturn;
 }
 
 export const Input: React.FC<IInputProps> = (props) => {
