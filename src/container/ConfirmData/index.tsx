@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { set, useForm } from 'react-hook-form';
+/* eslint-disable no-param-reassign */
+import React from 'react';
+
+import { useForm } from 'react-hook-form';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { ShopList } from '../../components/ShopList';
 import { PersonIcon } from '../../components/svg/PersonIcon';
 import { PATTERN } from '../../utils/pattern';
+import { masks } from '../../utils/masks';
 
 import s from './style.module.scss';
 
@@ -12,6 +15,8 @@ export const ConfirmData: React.FC = () => {
 	const {
 		register,
 		formState: { errors },
+		watch,
+		setValue,
 	} = useForm({ mode: 'onBlur' });
 
 	return (
@@ -51,7 +56,15 @@ export const ConfirmData: React.FC = () => {
 								className={errors.tel ? s.error : ''}
 								textLabel="Telefone"
 								placeholder="Ex: (99) 9 9999-9999"
+								maxLength={16}
 								type="tel"
+								onChange={(e) => {
+									masks.phoneNumber({
+										target: 'tel',
+										value: e.target.value,
+										setValue,
+									});
+								}}
 								register={register('tel', {
 									required: 'Campo obrigatório',
 									pattern: {
@@ -71,7 +84,11 @@ export const ConfirmData: React.FC = () => {
 								className={errors.cep ? s.error : ''}
 								textLabel="CEP"
 								placeholder="Ex: 00000-000"
-								type="number"
+								maxLength={9}
+								type="tel"
+								onChange={(e) => {
+									masks.cep({ target: 'cep', value: e.target.value, setValue });
+								}}
 								register={register('cep', {
 									required: 'Campo obrigatório',
 									pattern: {
@@ -134,6 +151,14 @@ export const ConfirmData: React.FC = () => {
 								className={errors.cardNumber ? s.error : ''}
 								textLabel="Número do cartão"
 								placeholder="Ex: 0000 0000 0000 0000"
+								maxLength={19}
+								onChange={(e) => {
+									masks.cardNumber({
+										target: 'cardNumber',
+										value: e.target.value,
+										setValue,
+									});
+								}}
 								type="tel"
 								register={register('cardNumber', {
 									required: 'Campo obrigatório',
@@ -147,7 +172,9 @@ export const ConfirmData: React.FC = () => {
 								}
 							/>
 							<Input
-								className={errors.cardName ? s.error : ''}
+								className={`${s.inputNameCard} ${
+									errors.cardName ? s.error : ''
+								}`}
 								textLabel="Nome do cartão"
 								placeholder="Ex: Fulano de Tal"
 								type="text"
@@ -162,7 +189,15 @@ export const ConfirmData: React.FC = () => {
 								className={errors.expirationCard ? s.error : ''}
 								textLabel="Data de expiração"
 								placeholder="Ex: MM/YYYY"
-								type="number"
+								type="tel"
+								maxLength={7}
+								onChange={(e) => {
+									masks.expirationCard({
+										target: 'expirationCard',
+										value: e.target.value,
+										setValue,
+									});
+								}}
 								register={register('expirationCard', {
 									required: 'Campo obrigatório',
 								})}
