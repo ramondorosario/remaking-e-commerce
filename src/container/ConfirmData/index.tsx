@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { Header } from '../../components/Header';
@@ -19,6 +19,19 @@ export const ConfirmData: React.FC = () => {
 		setValue,
 	} = useForm({ mode: 'onBlur' });
 
+	const [hasCompletedForm, setHasCompletedForm] = useState<boolean>(false);
+	const [hasError, setHasError] = useState<boolean>(false);
+	const allInputs = watch();
+
+	useEffect(() => {
+		const hasCompleted = Object.values(allInputs).every((e) => Boolean(e));
+		const hasInputError = Object.keys(allInputs).some((e) =>
+			Boolean(errors[e]?.message),
+		);
+		setHasCompletedForm(hasCompleted);
+		setHasError(hasInputError);
+	}, [allInputs]);
+
 	return (
 		<div className={s.container}>
 			<Header />
@@ -29,18 +42,18 @@ export const ConfirmData: React.FC = () => {
 						<div className={s.containerInputs}>
 							<Input
 								className={errors.name ? s.error : ''}
-								textLabel="Insira seu nome completo"
+								label="Insira seu nome completo"
 								placeholder="Ex: Fulano de Tal"
 								type="text"
 								register={register('name', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={errors.name && <p>{errors.name.message}</p>}
+								error={errors.name && <p>{errors.name.message}</p>}
 							/>
 
 							<Input
 								className={errors.email ? s.error : ''}
-								textLabel="Insira seu e-mail"
+								label="Insira seu e-mail"
 								placeholder="Ex: exemplo@email.com"
 								type="email"
 								register={register('email', {
@@ -50,11 +63,11 @@ export const ConfirmData: React.FC = () => {
 										message: 'Formato de email inválido',
 									},
 								})}
-								elementError={errors.email && <p>{errors.email.message}</p>}
+								error={errors.email && <p>{errors.email.message}</p>}
 							/>
 							<Input
 								className={errors.tel ? s.error : ''}
-								textLabel="Telefone"
+								label="Telefone"
 								placeholder="Ex: (99) 9 9999-9999"
 								maxLength={16}
 								type="tel"
@@ -72,7 +85,7 @@ export const ConfirmData: React.FC = () => {
 										message: 'Informe um número válido',
 									},
 								})}
-								elementError={errors.tel && <p>{errors.tel.message}</p>}
+								error={errors.tel && <p>{errors.tel.message}</p>}
 							/>
 						</div>
 					</div>
@@ -82,7 +95,7 @@ export const ConfirmData: React.FC = () => {
 						<div className={s.containerInputs}>
 							<Input
 								className={errors.cep ? s.error : ''}
-								textLabel="CEP"
+								label="CEP"
 								placeholder="Ex: 00000-000"
 								maxLength={9}
 								type="tel"
@@ -96,49 +109,49 @@ export const ConfirmData: React.FC = () => {
 										message: 'Informe um CEP válido',
 									},
 								})}
-								elementError={errors.cep && <p>{errors.cep.message}</p>}
+								error={errors.cep && <p>{errors.cep.message}</p>}
 							/>
 							<Input
 								className={errors.country ? s.error : ''}
-								textLabel="País"
+								label="País"
 								placeholder="Ex: Brasil"
 								type="text"
 								register={register('country', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={errors.country && <p>{errors.country.message}</p>}
+								error={errors.country && <p>{errors.country.message}</p>}
 							/>
 							<Input
 								className={errors.city ? s.error : ''}
-								textLabel="Cidade"
+								label="Cidade"
 								placeholder="Ex: Salvador"
 								type="text"
 								register={register('city', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={errors.city && <p>{errors.city.message}</p>}
+								error={errors.city && <p>{errors.city.message}</p>}
 							/>
 							<Input
 								className={errors.neighborhood ? s.error : ''}
-								textLabel="Bairro"
+								label="Bairro"
 								placeholder="Ex: São Rafael"
 								type="text"
 								register={register('neighborhood', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={
+								error={
 									errors.neighborhood && <p>{errors.neighborhood.message}</p>
 								}
 							/>
 							<Input
 								className={errors.houseNumber ? s.error : ''}
-								textLabel="Número"
+								label="Número"
 								placeholder="Ex: 00"
 								type="number"
 								register={register('houseNumber', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={
+								error={
 									errors.houseNumber && <p>{errors.houseNumber.message}</p>
 								}
 							/>
@@ -149,7 +162,7 @@ export const ConfirmData: React.FC = () => {
 						<div className={s.containerInputs}>
 							<Input
 								className={errors.cardNumber ? s.error : ''}
-								textLabel="Número do cartão"
+								label="Número do cartão"
 								placeholder="Ex: 0000 0000 0000 0000"
 								maxLength={19}
 								onChange={(e) => {
@@ -167,27 +180,23 @@ export const ConfirmData: React.FC = () => {
 										message: 'Número do cartão inválido',
 									},
 								})}
-								elementError={
-									errors.cardNumber && <p>{errors.cardNumber.message}</p>
-								}
+								error={errors.cardNumber && <p>{errors.cardNumber.message}</p>}
 							/>
 							<Input
 								className={`${s.inputNameCard} ${
 									errors.cardName ? s.error : ''
 								}`}
-								textLabel="Nome do cartão"
+								label="Nome do cartão"
 								placeholder="Ex: Fulano de Tal"
 								type="text"
 								register={register('cardName', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={
-									errors.cardName && <p>{errors.cardName.message}</p>
-								}
+								error={errors.cardName && <p>{errors.cardName.message}</p>}
 							/>
 							<Input
 								className={errors.expirationCard ? s.error : ''}
-								textLabel="Data de expiração"
+								label="Data de expiração"
 								placeholder="Ex: MM/YYYY"
 								type="tel"
 								maxLength={7}
@@ -201,7 +210,7 @@ export const ConfirmData: React.FC = () => {
 								register={register('expirationCard', {
 									required: 'Campo obrigatório',
 								})}
-								elementError={
+								error={
 									errors.expirationCard && (
 										<p>{errors.expirationCard.message}</p>
 									)
@@ -209,7 +218,7 @@ export const ConfirmData: React.FC = () => {
 							/>
 							<Input
 								className={errors.cvv ? s.error : ''}
-								textLabel="CVV"
+								label="CVV"
 								placeholder="Ex: 000"
 								maxLength={3}
 								type="tel"
@@ -220,12 +229,12 @@ export const ConfirmData: React.FC = () => {
 										message: 'CVV inválido',
 									},
 								})}
-								elementError={errors.cvv && <p>{errors.cvv.message}</p>}
+								error={errors.cvv && <p>{errors.cvv.message}</p>}
 							/>
 						</div>
 					</div>
 				</form>
-				<ShopList />
+				<ShopList hasForm filled={hasCompletedForm && !hasError} />
 			</section>
 		</div>
 	);
