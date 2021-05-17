@@ -1,5 +1,7 @@
+/* eslint-disable react/require-default-props */
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import { useShopList } from '../../contexts/ShopListContext';
 import { ShopListItem } from '../ShopListItem';
 import { Bag } from '../svg/Bag';
@@ -8,9 +10,18 @@ import { Ticket } from '../svg/Ticket';
 
 import s from './style.module.scss';
 
-export const ShopList: React.FC = () => {
+interface IShopList {
+	filled?: boolean;
+	hasForm?: boolean;
+}
+
+export const ShopList: React.FC<IShopList> = ({
+	filled,
+	hasForm,
+}: IShopList) => {
 	const { setValue, register, watch } = useForm();
 	const couponValue = watch('coupon');
+	const history = useHistory();
 
 	const { shopList, totalShopList, currentCoupon, applyCoupon } = useShopList();
 
@@ -62,8 +73,14 @@ export const ShopList: React.FC = () => {
 						<Ticket />
 					</div>
 					{shopList.length > 0 && (
-						<button type="button">
-							<span>Confirme seus dados</span>
+						<button
+							type="button"
+							onClick={() => history.push('/confirmar-dados')}
+							disabled={hasForm && !filled}
+						>
+							<span>
+								{hasForm ? 'Confirmar pagamento' : 'Confirme seus dados'}
+							</span>
 							<span>R$ {totalShopList.toString().replace('.', ',')}</span>
 						</button>
 					)}
