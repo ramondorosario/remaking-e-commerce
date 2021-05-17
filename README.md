@@ -10,7 +10,7 @@
 - Sass
 - Axios
 
-## Link para [aplicação](https://cubosflix-remaking.netlify.app/home)
+## Link para [aplicação](https://cubosflix-remaking.netlify.app/)
 ### Imagens
 ![image](https://user-images.githubusercontent.com/69545760/118425413-8d344380-b69f-11eb-9851-24089ece4440.png)
 
