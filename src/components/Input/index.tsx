@@ -6,19 +6,19 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 import s from './style.module.scss';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-	textLabel: string;
-	elementError: ReactNode;
+	label: string;
+	error: ReactNode;
 	register: UseFormRegisterReturn;
 }
 
 export const Input: React.FC<IInputProps> = (props) => {
-	const { textLabel, elementError, className, register } = props;
+	const { label, error, className, register } = props;
 
 	return (
 		<label className={`${s.container} ${className}`}>
-			<span>{textLabel}</span>
+			<span>{label}</span>
 			<input {...register} {...props} />
-			{elementError ?? ''}
+			{error ?? ''}
 		</label>
 	);
 };
