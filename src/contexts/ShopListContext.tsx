@@ -72,6 +72,7 @@ export const ShopListProvider: React.FC = ({ children }) => {
 	const clearShopList = () => {
 		localStorage.removeItem('shopList');
 		setShopList([]);
+		setCurrentCoupon('');
 	};
 
 	useEffect(() => {
