@@ -23,7 +23,13 @@ export const ShopList: React.FC<IShopList> = ({
 	const couponValue = watch('coupon');
 	const history = useHistory();
 
-	const { shopList, totalShopList, currentCoupon, applyCoupon } = useShopList();
+	const {
+		shopList,
+		totalShopList,
+		currentCoupon,
+		applyCoupon,
+		clearShopList,
+	} = useShopList();
 	const path = history.location.pathname;
 
 	useEffect(() => {
@@ -76,7 +82,14 @@ export const ShopList: React.FC<IShopList> = ({
 					{shopList.length > 0 && (
 						<button
 							type="button"
-							onClick={() => history.push('/confirmar-dados')}
+							onClick={() => {
+								if (path === '/home') {
+									history.push('/confirmar-dados');
+								} else {
+									history.push('/pagamento');
+									clearShopList();
+								}
+							}}
 							disabled={hasForm && !filled}
 						>
 							<span>
