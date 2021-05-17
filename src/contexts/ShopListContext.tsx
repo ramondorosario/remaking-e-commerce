@@ -17,6 +17,7 @@ interface IShopList {
 	incrementMovieInTheShopList: (item: IMovie) => void;
 	decrementMovieInTheShopList: (id: number) => void;
 	applyCoupon: (value: string) => void;
+	clearShopList: () => void;
 }
 
 export const ShopListContext = createContext({} as IShopList);
@@ -68,6 +69,11 @@ export const ShopListProvider: React.FC = ({ children }) => {
 		setShopList(JSON.parse(data!) ?? []);
 	};
 
+	const clearShopList = () => {
+		localStorage.removeItem('shopList');
+		setShopList([]);
+	};
+
 	useEffect(() => {
 		const value = shopList.reduce(
 			(acc, item) =>
@@ -88,6 +94,7 @@ export const ShopListProvider: React.FC = ({ children }) => {
 				applyCoupon,
 				incrementMovieInTheShopList,
 				decrementMovieInTheShopList,
+				clearShopList,
 			}}
 		>
 			{children}
