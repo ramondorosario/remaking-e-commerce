@@ -24,6 +24,7 @@ export const ShopList: React.FC<IShopList> = ({
 	const history = useHistory();
 
 	const { shopList, totalShopList, currentCoupon, applyCoupon } = useShopList();
+	const path = history.location.pathname;
 
 	useEffect(() => {
 		setValue('coupon', currentCoupon);
@@ -37,7 +38,7 @@ export const ShopList: React.FC<IShopList> = ({
 		<div className={s.containerShopList}>
 			<header className={s.headerShopList}>
 				<Bag />
-				<h2>Sacola</h2>
+				<h2>{path === '/confirmar-dados' ? 'Resumo dos pedidos' : 'Sacola'}</h2>
 			</header>
 			<div className={s.contentShopList}>
 				{shopList?.length ? (
