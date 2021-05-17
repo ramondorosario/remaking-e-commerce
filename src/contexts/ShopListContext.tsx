@@ -22,20 +22,26 @@ interface IShopList {
 export const ShopListContext = createContext({} as IShopList);
 
 export const ShopListProvider: React.FC = ({ children }) => {
-	const [shopList, setShopList] = useState<IMovie[]>([]);
+	const moviesStorage = localStorage.getItem('shopList');
+	const [shopList, setShopList] = useState<IMovie[]>(
+		JSON.parse(moviesStorage!) || [],
+	);
 	const [totalShopList, setTotalShopList] = useState<number>(0);
 	const [currentCoupon, setCurrentCoupon] = useState<string>('');
 
 	const incrementMovieInTheShopList = (item: IMovie) => {
 		const index = shopList.findIndex((movie) => movie.id === item.id);
-		const newList = [...shopList];
 
 		if (index !== -1) {
-			newList[index].amount++;
-			setShopList(newList);
+			shopList[index].amount++;
 		} else {
-			setShopList([...shopList, item]);
+			shopList.push(item);
 		}
+
+		localStorage.setItem('shopList', JSON.stringify(shopList));
+
+		const data = localStorage.getItem('shopList');
+		setShopList(JSON.parse(data!));
 	};
 
 	const applyCoupon = (value: string) => {
@@ -45,15 +51,21 @@ export const ShopListProvider: React.FC = ({ children }) => {
 	const decrementMovieInTheShopList = (id: number) => {
 		const index = shopList.findIndex((movie) => movie.id === id);
 		const movie = shopList[index];
-		const newList = [...shopList];
 
 		if (movie.amount > 1) {
-			newList[index].amount--;
-			setShopList(newList);
+			shopList[index].amount--;
 		} else {
-			newList.splice(index, 1);
+			shopList.splice(index, 1);
 		}
-		setShopList(newList);
+
+		if (!shopList.length) {
+			localStorage.removeItem('shopList');
+		} else {
+			localStorage.setItem('shopList', JSON.stringify(shopList));
+		}
+
+		const data = localStorage.getItem('shopList');
+		setShopList(JSON.parse(data!) ?? []);
 	};
 
 	useEffect(() => {
