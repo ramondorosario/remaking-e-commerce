@@ -4,6 +4,7 @@ import { useShopList } from '../../contexts/ShopListContext';
 import { Money } from '../svg/Money';
 import { Ticket } from '../svg/Ticket';
 import { Time } from '../svg/Time';
+
 import s from './style.module.scss';
 
 let teste: NodeJS.Timeout;
