@@ -6,7 +6,8 @@ import {
 	Switch,
 } from 'react-router-dom';
 import { ConfirmData } from '../container/ConfirmData';
-import { Home } from '../container/Home/Home';
+import { Home } from '../container/Home';
+import { Payment } from '../container/Payment';
 
 export const Routes = () => {
 	return (
@@ -15,6 +16,7 @@ export const Routes = () => {
 				<Route exact path="/" render={() => <Redirect to="/home" />} />
 				<Route path="/home" component={Home} />
 				<Route path="/confirmar-dados" component={ConfirmData} />
+				<Route path="/pagamento" component={Payment} />
 			</Switch>
 		</Router>
 	);
