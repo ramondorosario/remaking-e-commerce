@@ -5,9 +5,16 @@ import {
 	Route,
 	Switch,
 } from 'react-router-dom';
-import { ConfirmData } from '../container/ConfirmData';
-import { Home } from '../container/Home';
-import { Payment } from '../container/Payment';
+
+const Home = React.lazy(async () =>
+	import('../container/Home').then((m) => ({ default: m.Home })),
+);
+const ConfirmData = React.lazy(async () =>
+	import('../container/ConfirmData').then((m) => ({ default: m.ConfirmData })),
+);
+const Payment = React.lazy(async () =>
+	import('../container/Payment').then((m) => ({ default: m.Payment })),
+);
 
 export const Routes = () => {
 	return (

@@ -9,7 +9,9 @@ export const App: React.FC = () => {
 		<>
 			<MovieContextProvider>
 				<ShopListProvider>
-					<Routes />
+					<React.Suspense fallback>
+						<Routes />
+					</React.Suspense>
 				</ShopListProvider>
 			</MovieContextProvider>
 		</>
