@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# Projeto CubosFlix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Desenvolvimento de um web site de venda de filmes
+#### Este foi um projeto proposto como desafio 2 no curso da Cubos Academy. O mesmo já foi feito antes utilizando HTML, CSS e JS. 
+#### O projeto foi refeito utilizando outras tecnologias, com o intuito de praticar e aprimorar os novos conhecimentos adquiridos após a conclusão do curso.
 
-## Available Scripts
+## Tecnologias utilizadas:
+- React
+- Typescript
+- Sass
+- Axios
 
-In the project directory, you can run:
+## Link para [aplicação](https://cubosflix-remaking.netlify.app/)
+### Imagens
+![image](https://user-images.githubusercontent.com/69545760/118425413-8d344380-b69f-11eb-9851-24089ece4440.png)
 
-### `yarn start`
+![image](https://user-images.githubusercontent.com/69545760/118425542-c4a2f000-b69f-11eb-8bff-328b308f2c19.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://user-images.githubusercontent.com/69545760/118425564-cf5d8500-b69f-11eb-83ff-db620b3bdcd2.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://user-images.githubusercontent.com/69545760/118425603-e4d2af00-b69f-11eb-8b82-d1b154e3b219.png)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Autor
+#### [Ramon do Rosário](https://github.com/ramondorosario)
