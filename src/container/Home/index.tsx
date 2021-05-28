@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Banner } from '../../components/Banner';
 import { Header } from '../../components/Header';
 import { MovieCard } from '../../components/MovieCard';
+import { ShopList } from '../../components/ShopList';
 
 import { useMovies } from '../../contexts/MovieContext';
 
 import s from './style.module.scss';
-import { ShopList } from '../../components/ShopList';
 
 const buttons = [
 	{
