@@ -47,9 +47,7 @@ export const Banner: React.FC = () => {
 						<span>Cupom: htmlnaoelinguagem</span>
 					</div>
 				</div>
-
 				<span className={s.separate} />
-
 				<div className={s.column}>
 					<h2>Finaliza em</h2>
 					<div>
@@ -59,7 +57,6 @@ export const Banner: React.FC = () => {
 						</span>
 					</div>
 				</div>
-
 				<div className={s.column}>
 					<Money />
 				</div>
