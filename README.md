@@ -1,7 +1,7 @@
 # Projeto CubosFlix
 
 ## Desenvolvimento de um web site de venda de filmes
-#### Este foi um projeto proposto como desafio 2 no curso da Cubos Academy. O mesmo já foi feito antes utilizando HTML, CSS e JS. 
+#### Este foi um projeto proposto como desafio 2 no curso da Cubos Academy. O mesmo já foi feito antes utilizando HTML, JS e CSS. 
 #### O projeto foi refeito utilizando outras tecnologias, com o intuito de praticar e aprimorar os novos conhecimentos adquiridos após a conclusão do curso.
 
 ## Tecnologias utilizadas:
