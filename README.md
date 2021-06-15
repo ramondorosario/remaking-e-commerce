@@ -5,8 +5,8 @@
 #### O projeto foi refeito utilizando outras tecnologias, com o intuito de praticar e aprimorar os novos conhecimentos adquiridos após a conclusão do curso.
 
 ## Tecnologias utilizadas:
-- React
 - Typescript
+- React
 - Sass
 - Axios
 
